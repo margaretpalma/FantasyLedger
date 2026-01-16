@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairy's Treasury - Fantasy Ledger Application</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f3e5f5 50%, #e1f5fe 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #4a5568;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #c8e6c9 0%, #e1bee7 100%);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(156, 39, 176, 0.2);
+            margin-bottom: 40px;
+            border: 2px solid #b39ddb;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #7b1fa2;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(123, 31, 162, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #388e3c;
+            font-style: italic;
+        }
+
+        .fairy-decorations {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f1f8e9 0%, #f3e5f5 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(123, 31, 162, 0.15);
+            border: 2px solid #ce93d8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(123, 31, 162, 0.25);
+        }
+
+        .feature-card h3 {
+            color: #6a1b9a;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .feature-card p {
+            color: #5d4037;
+            line-height: 1.6;
+        }
+
+        /* Dropdown for Treasury Ledger */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #9c27b0;
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 0 8px 24px rgba(123, 31, 162, 0.3);
+            z-index: 10;
+        }
+
+        .feature-card:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e1bee7;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, #f1f8e9 0%, #f3e5f5 100%);
+        }
+
+        .dropdown-item a {
+            color: #6a1b9a;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(123, 31, 162, 0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #f1f8e9 0%, #f3e5f5 100%);
+            margin: 5% auto;
+            padding: 40px;
+            border: 3px solid #9c27b0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 8px 32px rgba(123, 31, 162, 0.3);
+        }
+
+        .close {
+            color: #7b1fa2;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+        }
+
+        .close:hover {
+            color: #4a148c;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #6a1b9a;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ce93d8;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Georgia', serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #9c27b0;
+            box-shadow: 0 0 10px rgba(156, 39, 176, 0.2);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #7b1fa2 0%, #4caf50 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(123, 31, 162, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Ledger Display */
+        .ledger-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #9c27b0;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .transaction-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .transaction-item.payment {
+            border-left-color: #e91e63;
+            background: #fce4ec;
+        }
+
+        .transaction-item.deposit {
+            border-left-color: #4caf50;
+            background: #e8f5e9;
+        }
+
+        .transaction-date {
+            color: #6a1b9a;
+            font-weight: bold;
+        }
+
+        .transaction-amount {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .amount-positive {
+            color: #2e7d32;
+        }
+
+        .amount-negative {
+            color: #c62828;
+        }
+
+        /* Menu Styles */
+        .menu-option {
+            background: linear-gradient(135deg, #f1f8e9 0%, #f3e5f5 100%);
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid #ce93d8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-option:hover {
+            background: linear-gradient(135deg, #c8e6c9 0%, #e1bee7 100%);
+            transform: translateX(5px);
+            border-color: #9c27b0;
+        }
+
+        .menu-option h4 {
+            color: #6a1b9a;
+            margin: 0;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ce93d8;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Georgia', serif;
+            margin: 10px 0;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #9c27b0;
+            box-shadow: 0 0 10px rgba(156, 39, 176, 0.2);
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #9575cd 0%, #81c784 100%);
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6a1b9a;
+            margin-top: 40px;
+        }
+
+        .sparkle {
+            color: #ffd700;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="fairy-decorations">⋆｡ﾟ☁｡⋆｡☾⋆｡ﾟ☁｡⋆｡☾⋆｡ﾟ☁｡⋆｡</div>
+        <h1>✨ Fairy's Treasury ✨</h1>
+        <p class="subtitle">A Magical Financial Ledger Application</p>
+        <div class="fairy-decorations">━━━━━━━━⊱⋆⊰━━━━━━━━</div>
+    </header>
+
+    <section class="features-grid">
+        <div class="feature-card" onclick="openDepositModal()">
+            <h3>🌟 Enchanted Deposits</h3>
+            <p>Add treasures to your vault with ease! Track every coin that finds its way into your magical pouch with detailed descriptions and merchant information.</p>
+        </div>
+
+        <div class="feature-card" onclick="openPaymentModal()">
+            <h3>💫 Make Payment</h3>
+            <p>Record your generous exchanges with the realm's finest merchants. Every payment is carefully logged in the Treasury of Trades.</p>
+        </div>
+
+        <div class="feature-card" onclick="openLedgerMenu()">
+            <h3>📜 Treasury Ledger</h3>
+            <p>View all your transactions in one enchanted scroll. Click to explore your magical records!</p>
+        </div>
+
+        <div class="feature-card" onclick="openReportsMenu()">
+            <h3>🔮 Records Chamber</h3>
+            <p>Search through your treasury with powerful magical queries. Filter by dates, merchants, and more!</p>
+        </div>
+    </section>
+
+    <!-- Deposit Modal -->
+    <div id="depositModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDepositModal()">&times;</span>
+            <h2 style="color: #6a1b9a; margin-bottom: 30px; text-align: center;">✨ Add Enchanted Deposit ✨</h2>
+            <form id="depositForm">
+                <div class="form-group">
+                    <label>Description of Fortune:</label>
+                    <input type="text" id="description" required placeholder="e.g., Glass slipper refund deposit">
+                </div>
+                <div class="form-group">
+                    <label>Merchant/Vendor:</label>
+                    <input type="text" id="vendor" required placeholder="e.g., Cinderella">
+                </div>
+                <div class="form-group">
+                    <label>Amount (in gold coins):</label>
+                    <input type="number" id="amount" step="0.01" required placeholder="e.g., 250.00">
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="submit-btn">💫 Add to Treasury</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <h2 style="color: #6a1b9a; margin-bottom: 30px; text-align: center;">💸 Make Payment 💸</h2>
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label>Description of Payment:</label>
+                    <input type="text" id="paymentDescription" required placeholder="e.g., Monthly tower apartment rent">
+                </div>
+                <div class="form-group">
+                    <label>Merchant/Vendor:</label>
+                    <input type="text" id="paymentVendor" required placeholder="e.g., Rapunzel">
+                </div>
+                <div class="form-group">
+                    <label>Amount (in gold coins):</label>
+                    <input type="number" id="paymentAmount" step="0.01" required placeholder="e.g., 650.00">
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="submit-btn">💫 Record Payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ledger Modal -->
+    <div id="ledgerModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close" onclick="closeLedgerModal()">&times;</span>
+            <h2 id="ledgerTitle" style="color: #6a1b9a; margin-bottom: 30px; text-align: center;">📜 Treasury Ledger</h2>
+            <div class="ledger-container" id="ledgerContent">
+                <!-- Transactions will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Ledger Menu Modal -->
+    <div id="ledgerMenuModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLedgerMenu()">&times;</span>
+            <h2 style="color: #6a1b9a; margin-bottom: 20px; text-align: center;">📜 Treasury of Trades (Ledger)</h2>
+            <p style="text-align: center; color: #5d4037; margin-bottom: 30px; font-style: italic;">
+                Your wish is the fairy's command - which entries shall we reveal?
+            </p>
+            <div class="menu-option" onclick="showLedger('all')">
+                <h4>📊 All Entries</h4>
+            </div>
+            <div class="menu-option" onclick="showLedger('deposits')">
+                <h4>💰 Treasure Deposits</h4>
+            </div>
+            <div class="menu-option" onclick="showLedger('payments')">
+                <h4>💸 Treasure Payments</h4>
+            </div>
+            <div style="text-align: center;">
+                <button class="back-btn" onclick="closeLedgerMenu()">← Back to Enchanted Counter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reports Menu Modal -->
+    <div id="reportsMenuModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReportsMenu()">&times;</span>
+            <h2 style="color: #6a1b9a; margin-bottom: 20px; text-align: center;">🔮 Records Chamber (Reports)</h2>
+            <p style="text-align: center; color: #5d4037; margin-bottom: 30px; font-style: italic;">
+                Speak your desire, and the Archives shall shimmer with the results.
+            </p>
+            <div class="menu-option" onclick="showReport('monthToDate')">
+                <h4>1) Month To Date</h4>
+            </div>
+            <div class="menu-option" onclick="showReport('previousMonth')">
+                <h4>2) Previous Month</h4>
+            </div>
+            <div class="menu-option" onclick="showReport('yearToDate')">
+                <h4>3) Year To Date</h4>
+            </div>
+            <div class="menu-option" onclick="showReport('previousYear')">
+                <h4>4) Previous Year</h4>
+            </div>
+            <div class="menu-option" onclick="openVendorSearch()">
+                <h4>5) Seek Trades by Merchant Name</h4>
+            </div>
+            <div style="text-align: center;">
+                <button class="back-btn" onclick="closeReportsMenu()">← Back to Enchanted Counter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendor Search Modal -->
+    <div id="vendorSearchModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeVendorSearch()">&times;</span>
+            <h2 style="color: #6a1b9a; margin-bottom: 20px; text-align: center;">🔍 Seek Trades by Merchant</h2>
+            <p style="text-align: center; color: #5d4037; margin-bottom: 20px; font-style: italic;">
+                The fairy clerk flips through the glowing pages...
+            </p>
+            <input type="text" id="vendorSearchInput" class="search-input" placeholder="Whose trades shall I reveal today traveler?">
+            <div style="text-align: center;">
+                <button class="submit-btn" onclick="searchByVendor()">🔮 Search Treasury</button>
+            </div>
+            <div id="vendorSearchResults" style="margin-top: 30px;">
+                <!-- Search results will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="fairy-decorations">⋆｡ﾟ☁｡⋆｡☾⋆｡ﾟ☁｡⋆｡☾⋆｡ﾟ☁｡⋆｡</div>
+        <p>✨Created By Nisa|Mohammed|Xavier|Hunbal|John|Margaret| <span class="sparkle">✨</span></p>
+        <p style="margin-top: 10px;">May your treasures always multiply, traveler!</p>
+    </footer>
+</div>
+
+<script>
+    // CSV data stored in memory
+    const csvData = `2024-01-05|09:15:30|Glass slipper refund deposit|Cinderella|250.00
+2024-01-15|16:45:12|Salary deposit from royal duties|Arendelle|1200.00
+2024-01-20|11:20:33|Fairy godmother wand repair|Fairy God Mother|-85.00
+2024-02-01|09:00:00|Monthly tower apartment rent|Rapunzel|-650.00
+2024-02-03|15:30:45|Treasure chest find deposit|NeverLand|380.00
+2024-02-14|14:20:15|True love kiss certificate|Prince Charming|-99.00
+2024-03-01|09:30:00|Salary deposit from royal duties|Arendelle|1200.00
+2024-03-10|10:50:40|Beast taming training class|Belle|-175.00
+2024-03-18|12:40:15|Magic mirror consultation|Evil Queen|-52.30
+2024-04-01|09:00:00|Monthly tower apartment rent|Rapunzel|-650.00
+2024-04-12|15:35:00|Wish granting deposit|Geppetto Workshop|300.00
+2024-04-15|11:50:45|Salary deposit from royal duties|Arendelle|1200.00
+2024-04-27|12:30:45|Ball gown with enchantment|Fairy Godmother|-428.00
+2024-05-13|15:50:15|Rescued princess reward deposit|Far Far Away|840.00
+2024-05-30|14:45:00|Dragon slaying deposit|Shrek|625.00
+2025-06-01|09:00:00|Monthly tower apartment rent|Rapunzel|-650.00
+2025-06-15|10:00:00|Salary deposit from royal duties|Arendelle|1200.00
+2025-06-23|12:40:00|Royal ball performance deposit|Prince Eric|480.00
+2025-07-01|09:30:00|Treasure map purchase|Captain Hook|-95.00`;
+
+    let transactions = [];
+
+    // Parse CSV data
+    function parseCSV() {
+        const lines = csvData.trim().split('\n');
+        transactions = lines.map(line => {
+            const parts = line.split('|');
+            return {
+                date: parts[0],
+                time: parts[1],
+                description: parts[2],
+                vendor: parts[3],
+                amount: parseFloat(parts[4])
+            };
+        });
+    }
+
+    // Open deposit modal
+    function openDepositModal() {
+        document.getElementById('depositModal').style.display = 'block';
+    }
+
+    // Close deposit modal
+    function closeDepositModal() {
+        document.getElementById('depositModal').style.display = 'none';
+    }
+
+    // Open payment modal
+    function openPaymentModal() {
+        document.getElementById('paymentModal').style.display = 'block';
+    }
+
+    // Close payment modal
+    function closePaymentModal() {
+        document.getElementById('paymentModal').style.display = 'none';
+    }
+
+    // Open ledger menu
+    function openLedgerMenu() {
+        document.getElementById('ledgerMenuModal').style.display = 'block';
+    }
+
+    // Close ledger menu
+    function closeLedgerMenu() {
+        document.getElementById('ledgerMenuModal').style.display = 'none';
+    }
+
+    // Open reports menu
+    function openReportsMenu() {
+        document.getElementById('reportsMenuModal').style.display = 'block';
+    }
+
+    // Close reports menu
+    function closeReportsMenu() {
+        document.getElementById('reportsMenuModal').style.display = 'none';
+    }
+
+    // Open vendor search
+    function openVendorSearch() {
+        document.getElementById('reportsMenuModal').style.display = 'none';
+        document.getElementById('vendorSearchModal').style.display = 'block';
+    }
+
+    // Close vendor search
+    function closeVendorSearch() {
+        document.getElementById('vendorSearchModal').style.display = 'none';
+        document.getElementById('vendorSearchInput').value = '';
+        document.getElementById('vendorSearchResults').innerHTML = '';
+    }
+
+    // Close ledger modal
+    function closeLedgerModal() {
+        document.getElementById('ledgerModal').style.display = 'none';
+    }
+
+    // Show ledger with filter
+    function showLedger(filter) {
+        parseCSV();
+        const ledgerContent = document.getElementById('ledgerContent');
+        const ledgerTitle = document.getElementById('ledgerTitle');
+
+        let filteredTransactions = transactions;
+
+        if (filter === 'deposits') {
+            filteredTransactions = transactions.filter(t => t.amount > 0);
+            ledgerTitle.textContent = '💰 Treasure Deposits';
+        } else if (filter === 'payments') {
+            filteredTransactions = transactions.filter(t => t.amount < 0);
+            ledgerTitle.textContent = '💸 Treasure Payments';
+        } else {
+            ledgerTitle.textContent = '📜 All Transactions';
+        }
+
+        ledgerContent.innerHTML = filteredTransactions.map(t => {
+            const isDeposit = t.amount > 0;
+            const amountClass = isDeposit ? 'amount-positive' : 'amount-negative';
+            const transactionClass = isDeposit ? 'deposit' : 'payment';
+
+            return `
+                <div class="transaction-item ${transactionClass}">
+                    <div class="transaction-date">${t.date} at ${t.time}</div>
+                    <div style="margin: 5px 0;"><strong>${t.description}</strong></div>
+                    <div style="color: #666;">Merchant: ${t.vendor}</div>
+                    <div class="transaction-amount ${amountClass}">${isDeposit ? '+' : ''}${t.amount.toFixed(2)} gold coins</div>
+                </div>
+            `;
+        }).join('');
+
+        closeLedgerMenu();
+        document.getElementById('ledgerModal').style.display = 'block';
+    }
+
+    // Show reports by date filter
+    function showReport(reportType) {
+        parseCSV();
+        const ledgerContent = document.getElementById('ledgerContent');
+        const ledgerTitle = document.getElementById('ledgerTitle');
+
+        const today = new Date();
+        let filteredTransactions = [];
+        let title = '';
+        let message = '';
+
+        if (reportType === 'monthToDate') {
+            const currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+            filteredTransactions = transactions.filter(t => {
+                const tDate = new Date(t.date);
+                return tDate.getMonth() === currentMonth && tDate.getFullYear() === currentYear;
+            });
+            title = '📅 Month To Date';
+            message = "The fairy's scroll has revealed every coin and trade from this moon cycle.";
+        } else if (reportType === 'previousMonth') {
+            const lastMonth = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+            filteredTransactions = transactions.filter(t => {
+                const tDate = new Date(t.date);
+                return tDate.getMonth() === lastMonth.getMonth() && tDate.getFullYear() === lastMonth.getFullYear();
+            });
+            title = '📅 Previous Month';
+            message = "The fairy's scroll has revealed every coin and trade from the last moon cycle.";
+        } else if (reportType === 'yearToDate') {
+            const currentYear = today.getFullYear();
+            filteredTransactions = transactions.filter(t => {
+                const tDate = new Date(t.date);
+                return tDate.getFullYear() === currentYear;
+            });
+            title = '📅 Year To Date';
+            message = "Every coin and trade from this year sparkles before you - what a treasure trove!";
+        } else if (reportType === 'previousYear') {
+            const lastYear = today.getFullYear() - 1;
+            filteredTransactions = transactions.filter(t => {
+                const tDate = new Date(t.date);
+                return tDate.getFullYear() === lastYear;
+            });
+            title = '📅 Previous Year';
+            message = "Every coin and trade from last year sparkles before you - what a treasure trove!";
+        }
+
+        ledgerTitle.textContent = title;
+
+        if (filteredTransactions.length === 0) {
+            ledgerContent.innerHTML = `<p style="text-align: center; color: #6a1b9a; padding: 40px; font-style: italic;">No transactions found for this period.</p>`;
+        } else {
+            ledgerContent.innerHTML = filteredTransactions.map(t => {
+                const isDeposit = t.amount > 0;
+                const amountClass = isDeposit ? 'amount-positive' : 'amount-negative';
+                const transactionClass = isDeposit ? 'deposit' : 'payment';
+
+                return `
+                    <div class="transaction-item ${transactionClass}">
+                        <div class="transaction-date">${t.date} at ${t.time}</div>
+                        <div style="margin: 5px 0;"><strong>${t.description}</strong></div>
+                        <div style="color: #666;">Merchant: ${t.vendor}</div>
+                        <div class="transaction-amount ${amountClass}">${isDeposit ? '+' : ''}${t.amount.toFixed(2)} gold coins</div>
+                    </div>
+                `;
+            }).join('') + `<p style="text-align: center; color: #6a1b9a; padding: 20px; font-style: italic;">${message}</p>`;
+        }
+
+        closeReportsMenu();
+        document.getElementById('ledgerModal').style.display = 'block';
+    }
+
+    // Search by vendor
+    function searchByVendor() {
+        parseCSV();
+        const vendorInput = document.getElementById('vendorSearchInput').value.trim().toLowerCase();
+        const resultsDiv = document.getElementById('vendorSearchResults');
+
+        if (!vendorInput) {
+            resultsDiv.innerHTML = `<p style="text-align: center; color: #c62828; padding: 20px;">Please enter a merchant name.</p>`;
+            return;
+        }
+
+        const filteredTransactions = transactions.filter(t =>
+            t.vendor.toLowerCase().includes(vendorInput)
+        );
+
+        if (filteredTransactions.length === 0) {
+            resultsDiv.innerHTML = `
+                <div style="text-align: center; padding: 40px;">
+                    <p style="color: #6a1b9a; font-style: italic;">
+                        The fairy looks down with furrowed eyebrows then back up at you.<br>
+                        'It seems that your merchant isn't found here...'
+                    </p>
+                </div>
+            `;
+        } else {
+            resultsDiv.innerHTML = `
+                <div style="margin-bottom: 20px;">
+                    <p style="text-align: center; color: #6a1b9a; font-weight: bold; margin-bottom: 20px;">
+                        'Here's what I've found for ${vendorInput}'
+                    </p>
+                    <div class="ledger-container">
+                        ${filteredTransactions.map(t => {
+                            const isDeposit = t.amount > 0;
+                            const amountClass = isDeposit ? 'amount-positive' : 'amount-negative';
+                            const transactionClass = isDeposit ? 'deposit' : 'payment';
+
+                            return `
+                                <div class="transaction-item ${transactionClass}">
+                                    <div class="transaction-date">${t.date} at ${t.time}</div>
+                                    <div style="margin: 5px 0;"><strong>${t.description}</strong></div>
+                                    <div style="color: #666;">Merchant: ${t.vendor}</div>
+                                    <div class="transaction-amount ${amountClass}">${isDeposit ? '+' : ''}${t.amount.toFixed(2)} gold coins</div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+    }
+
+    // Handle deposit form submission
+    document.getElementById('depositForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const description = document.getElementById('description').value;
+        const vendor = document.getElementById('vendor').value;
+        const amount = document.getElementById('amount').value;
+
+        alert(`✨ Deposit Added! ✨\n\nDescription: ${description}\nVendor: ${vendor}\nAmount: ${amount} gold coins\n\nYour treasure has been safely stored in the Treasury!`);
+
+        // Reset form and close modal
+        document.getElementById('depositForm').reset();
+        closeDepositModal();
+    });
+
+    // Handle payment form submission
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const description = document.getElementById('paymentDescription').value;
+        const vendor = document.getElementById('paymentVendor').value;
+        const amount = document.getElementById('paymentAmount').value;
+
+        alert(`💸 Payment Recorded! 💸\n\nDescription: ${description}\nVendor: ${vendor}\nAmount: -${amount} gold coins\n\nYour payment has been logged in the Treasury!`);
+
+        // Reset form and close modal
+        document.getElementById('paymentForm').reset();
+        closePaymentModal();
+    });
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+        const depositModal = document.getElementById('depositModal');
+        const paymentModal = document.getElementById('paymentModal');
+        const ledgerModal = document.getElementById('ledgerModal');
+        const ledgerMenuModal = document.getElementById('ledgerMenuModal');
+        const reportsMenuModal = document.getElementById('reportsMenuModal');
+        const vendorSearchModal = document.getElementById('vendorSearchModal');
+
+        if (event.target == depositModal) {
+            closeDepositModal();
+        }
+        if (event.target == paymentModal) {
+            closePaymentModal();
+        }
+        if (event.target == ledgerModal) {
+            closeLedgerModal();
+        }
+        if (event.target == ledgerMenuModal) {
+            closeLedgerMenu();
+        }
+        if (event.target == reportsMenuModal) {
+            closeReportsMenu();
+        }
+        if (event.target == vendorSearchModal) {
+            closeVendorSearch();
+        }
+    }
+
+    // Initialize
+    parseCSV();
+</script>
+</body>
+</html>

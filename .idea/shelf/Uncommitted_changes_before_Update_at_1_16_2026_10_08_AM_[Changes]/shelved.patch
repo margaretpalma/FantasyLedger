@@ -1,0 +1,93 @@
+Index: transactions.csv
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>2024-01-05|09:15:30|Glass slipper refund deposit|Cinderella|250.00\r\n2024-01-15|16:45:12|Salary deposit from royal duties|Arendelle|1200.00\r\n2024-01-20|11:20:33|Fairy godmother wand repair|Fairy God Mother|-85.00\r\n2024-02-01|09:00:00|Monthly tower apartment rent|Rapunzel|-650.00\r\n2024-02-03|15:30:45|Treasure chest find deposit|NeverLand|380.00\r\n2024-02-14|14:20:15|True love kiss certificate|Prince Charming|-99.00\r\n2024-03-01|09:30:00|Salary deposit from royal duties|Arendelle|1200.00\r\n2024-03-10|10:50:40|Beast taming training class|Belle|-175.00\r\n2024-03-18|12:40:15|Magic mirror consultation|Evil Queen|-52.30\r\n2024-04-01|09:00:00|Monthly tower apartment rent|Rapunzel|-650.00\r\n2024-04-12|15:35:00|Wish granting deposit|Geppetto Workshop|300.00\r\n2024-04-15|11:50:45|Salary deposit from royal duties|Arendelle|1200.00\r\n2024-04-27|12:30:45|Ball gown with enchantment|Fairy Godmother|-428.00\r\n2024-05-13|15:50:15|Rescued princess reward deposit|Far Far Away|840.00\r\n2024-05-30|14:45:00|Dragon slaying deposit|Shrek|625.00\r\n2025-06-01|09:00:00|Monthly tower apartment rent|Rapunzel|-650.00\r\n2025-06-15|10:00:00|Salary deposit from royal duties|Arendelle|1200.00\r\n2025-06-23|12:40:00|Royal ball performance deposit|Prince Eric|480.00\r\n2025-07-01|09:30:00|Treasure map purchase|Captain Hook|-95.00\r\n2025-07-15|10:30:00|Salary deposit from royal duties|Arendelle|1200.00\r\n2025-07-26|14:50:00|Tower structural repairs|Rapunzel|-335.75\r\n2025-08-01|09:00:00|Monthly tower apartment rent|Rapunzel|-650.00\r\n2025-08-15|11:25:30|Salary deposit from royal duties|Arendelle|1200.00\r\n2025-08-30|13:25:45|True love kiss guarantee plan|Princess Protection|-285.00\r\n2025-09-05|14:15:22|Underwater breathing potion|Ursula|-88.25\r\n2025-09-15|16:45:12|Salary deposit from royal duties|Arendelle|1200.00\r\n2025-09-22|10:40:25|Flying lessons enrollment|Peter Pan|-335.00\r\n2025-10-01|09:00:00|Monthly tower apartment rent|Rapunzel|-650.00\r\n2025-10-10|15:30:15|Dwarf mining equipment|Dwarfs Mine|-131.50\r\n2025-10-15|11:50:45|Salary deposit from royal duties|Arendelle|1200.00\r\n2025-10-15|11:51:00|Slaying a dragon|Sleeping Beauty|500.0\r\n2025-10-15|13:40:55|Pixie dust|Tinkerbell|-49.99\r\n2025-10-16|15:03:37.820159|Robbed pirate ship|Black beard|2000.0\r\n2025-10-16|15:41:35.604141200|Saved stitch from a tree|Lilo|4.0
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/transactions.csv b/transactions.csv
+--- a/transactions.csv	(revision ab4435352b3386315b0c1381785f20107c96f889)
++++ b/transactions.csv	(date 1768573506381)
+@@ -31,4 +31,5 @@
+ 2025-10-15|11:51:00|Slaying a dragon|Sleeping Beauty|500.0
+ 2025-10-15|13:40:55|Pixie dust|Tinkerbell|-49.99
+ 2025-10-16|15:03:37.820159|Robbed pirate ship|Black beard|2000.0
+-2025-10-16|15:41:35.604141200|Saved stitch from a tree|Lilo|4.0
+\ No newline at end of file
++2025-10-16|15:41:35.604141200|Saved stitch from a tree|Lilo|4.0
++2026-01-16|09:25:06.358747100|Water|The Bank |199.0
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"9ec06486-3a42-4a18-b46f-511b9088d4a5\" name=\"Changes\" comment=\"Changes\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/pluralsight/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/pluralsight/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;nisaking03&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/nisaking03/FantasyLedger&quot;,\r\n    &quot;accountId&quot;: &quot;6ea9c8eb-3f29-42e4-9750-ae2d24476634&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 7\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"349iIyVhs5HvTudHa6D1hpTpVHn\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Student/pluralsight/capstones/FantasyLedger&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"9ec06486-3a42-4a18-b46f-511b9088d4a5\" name=\"Changes\" comment=\"\" />\r\n      <created>1760632112258</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1760632112258</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Changes\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760644930171</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760644930171</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"UnknownFeatures\">\r\n    <option featureType=\"com.intellij.fileTypeFactory\" implementationName=\"*.csv\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Changes\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Changes\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/com/pluralsight/ConsoleHelper.java</url>\r\n          <line>21</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.util.InputMismatchException\" package=\"java.util\" />\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision ab4435352b3386315b0c1381785f20107c96f889)
++++ b/.idea/workspace.xml	(date 1768574175712)
+@@ -6,7 +6,7 @@
+   <component name="ChangeListManager">
+     <list default="true" id="9ec06486-3a42-4a18-b46f-511b9088d4a5" name="Changes" comment="Changes">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/transactions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/transactions.csv" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -22,12 +22,12 @@
+     &quot;assignee&quot;: &quot;nisaking03&quot;
+   }
+ }</component>
+-  <component name="GithubPullRequestsUISettings">{
+-  &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/nisaking03/FantasyLedger&quot;,
+-    &quot;accountId&quot;: &quot;6ea9c8eb-3f29-42e4-9750-ae2d24476634&quot;
+-  }
+-}</component>
++  <component name="GithubPullRequestsUISettings"><![CDATA[{
++  "selectedUrlAndAccountId": {
++    "url": "https://github.com/margaretpalma/FantasyLedger",
++    "accountId": "a50708b3-f560-40c2-8cb9-3aa2f9cd65b0"
++  }
++}]]></component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 7
+ }</component>
+@@ -36,15 +36,15 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Student/pluralsight/capstones/FantasyLedger&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Application.Main.executor": "Run",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "git-widget-placeholder": "main",
++    "kotlin-language-version-configured": "true",
++    "last_opened_file_path": "C:/Users/Student/pluralsight/FantasyLedger"
+   }
+-}</component>
++}]]></component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -75,11 +75,6 @@
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+       <breakpoints>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/com/pluralsight/ConsoleHelper.java</url>
+-          <line>21</line>
+-          <option name="timeStamp" value="1" />
+-        </line-breakpoint>
+         <breakpoint enabled="true" type="java-exception">
+           <properties class="java.util.InputMismatchException" package="java.util" />
+           <option name="timeStamp" value="2" />
