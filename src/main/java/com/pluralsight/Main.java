@@ -68,10 +68,10 @@ public class Main {
         "'Please describe this fortune's purpose.'\n" + "You");
 
         String vendor = ConsoleHelper.promptForString
-        ("'From which realm, shop, or kind soul does this gold arrive?'\n" + "You");
+        ("'From which realm, shop, or kind soul does this gold arrive (WHICH VENDOR)?'\n" + "You");
 
         Double amount = ConsoleHelper.promptForDouble
-        ("'And how many shimmering coins shall we add to your pouch?'\n" + "You");
+        ("'And how many shimmering coins shall we add to your pouch (AMOUNT)?'\n" + "You");
 
         System.out.println("'Thank you! I've stored your information in the Treasury of Trades'");
 
@@ -86,9 +86,9 @@ public class Main {
         "'Please describe this fortune's purpose.'\n" + "You");
 
         String vendor = ConsoleHelper.promptForString
-        ("'To which realm, shop, or kind soul does this gold go?'\n" + "You");
+        ("'To which realm, shop, or kind soul does this gold go (VENDOR)?'\n" + "You");
 
-        System.out.print("'And how many shimmering coins shall we add to your pouch?'\n" + "You: ");
+        System.out.print("'And how many shimmering coins shall we add to your pouch (AMOUNT)?'\n" + "You: ");
         //This will make sure that the money will show it's negative (aka losing money)
         Double amount = scanner.nextDouble() * -1;
 
