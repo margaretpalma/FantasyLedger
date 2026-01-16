@@ -15,23 +15,21 @@ public class Main {
 
     //━━━━━━━━━━━━━━━━━━━━⊱⋆Main Menu and Choices⋆⊰━━━━━━━━━━━━━━━━━━━━
     public static void main(String[] args) {
-        System.out.println(
-                "╭──────────────────────.★..───╮\n" +
-                "  Welcome to Fairy's Treasury\n" +
-                "╰───..★.──────────────────────╯\n");
+        System.out.println("""
+                ╭──────────────────────.★..───╮\n 
+                  Welcome to Fairy's Treasury\n 
+                ╰───..★.──────────────────────╯\n
+                You push open the wooden door of a cozy little shop...\n 
+                A bell jingles, and a fairy clerk flutters over with a smile.\n""");
 
-        System.out.println(
-                "You push open the wooden door of a cozy little shop...\n" +
-                "A bell jingles, and a fairy clerk flutters over with a smile.\n");
-
-        String mainMenu =
-                "━━━━━━━━━━━━━━━━━━━━⊱⋆⊰━━━━━━━━━━━━━━━━━━━━\n" +
-                "⋆｡ﾟ☁｡⋆☾｡ The Enchanted Counter ⋆｡ﾟ☁｡⋆｡☾\n" +
-                "D) Add Treasure Deposit\n" +
-                "P) Make Treasure Payment\n" +
-                "L) Treasury of Trades (Ledger)\n" +
-                "X) Exit\n" +
-                "━━━━━━━━━━━━━━━━━━━━⊱⋆⊰━━━━━━━━━━━━━━━━━━━━\n";
+        String mainMenu = """
+                ━━━━━━━━━━━━━━━━━━━━⊱⋆⊰━━━━━━━━━━━━━━━━━━━━\n 
+                ⋆｡ﾟ☁｡⋆☾｡ The Enchanted Counter ⋆｡ﾟ☁｡⋆｡☾\n 
+                D) Add Treasure Deposit\n
+                P) Make Treasure Payment\n
+                L) Treasury of Trades (Ledger)\n
+                X) Exit\n
+                ━━━━━━━━━━━━━━━━━━━━⊱⋆⊰━━━━━━━━━━━━━━━━━━━━\n""";
 
         while (true) {
             System.out.print(mainMenu);
@@ -237,7 +235,6 @@ public class Main {
         }
     }
 
-    
     private static void viewMonthToDate(){
 
         LocalDate today = LocalDate.now();
